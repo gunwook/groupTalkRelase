@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import { Request } from 'express';
 dotenv.config();
 
-const s3Storage = require('multer-sharp-s3');
+//const s3Storage = require('multer-sharp-s3');
 const multerS3 = require('multer-s3')
 
 aws.config.update({
