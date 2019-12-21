@@ -13,7 +13,7 @@ cache:
 
 
 before_deploy:
-   - /Users/leegunwook/Desktop/serverProduction/groupTalkServer/deploy/before_deploy.sh
+   - ./before_deploy.sh
 deploy:
     provider: s3 # AWS S3를 의미
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
@@ -21,8 +21,8 @@ deploy:
     bucket: upload-group-source # S3에 생성한 버킷
     region: ap-northeast-2
     skip_cleanup: true
+    local_dir: ./deploy
     wait-until-deployed: true
-    acl: public_read
     on:
       repo: gunwook/groupTalkRelase #Github 주소
       branch: master
