@@ -13,8 +13,8 @@ cache:
 
 
 before_deploy:
-  - rm -rf node_modules
-  - zip -r groupTalkRelase *
+  - rm -rf node_modules # travis가 설치한 node_moduels를 삭제
+  - zip -r groupTalkRelase * 
   - mkdir -p deploy
   - mv groupTalkRelase.zip deploy/groupTalkRelase.zip
 
@@ -22,7 +22,7 @@ deploy:
     provider: s3 # AWS S3를 의미
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
     secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
-    bucket: development-blog-image # S3에 생성한 버킷
+    bucket: upload-group-source # S3에 생성한 버킷
     region: ap-northeast-2
     skip_cleanup: true
     local_dir: deploy # deploy 디렉터리에 있는 파일을 s3로 업로드 하겠다는 의미
@@ -34,7 +34,7 @@ deploy:
     provider: codedeploy # AWS CodeDeploy를 의미
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
     secret_access_key: $AWS_SECRET_KEY   # Travis repo settings에 설정된 값
-    bucket: development-blog-image # AWS CodeDeploy가 다운로드 받은 버킷
+    bucket: upload-group-source # AWS CodeDeploy가 다운로드 받은 버킷
     key: groupTalkRelase.zip # 해당 버킷에 저장되어 있는 파일 이름
     bundle_type: zip # 버킷에 저장되어 있는 파일의 확장자
     application: group-talk-service # AWS 배포 애플리케이션
