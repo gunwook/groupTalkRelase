@@ -13,11 +13,7 @@ cache:
 
 
 before_deploy:
-  - rm -rf node_modules # travis가 설치한 node_moduels를 삭제
-  - zip -r groupTalkRelase * 
-  - mkdir -p deploy
-  - mv groupTalkRelase.zip deploy/groupTalkRelase.zip
-
+   - ./before_deploy.sh
 deploy:
     provider: s3 # AWS S3를 의미
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
@@ -27,6 +23,7 @@ deploy:
     skip_cleanup: true
     local_dir: deploy # deploy 디렉터리에 있는 파일을 s3로 업로드 하겠다는 의미
     wait-until-deployed: true
+    acl: public_read
     on:
       repo: gunwook/groupTalkRelase #Github 주소
       branch: master
