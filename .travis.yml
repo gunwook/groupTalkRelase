@@ -17,3 +17,4 @@ before_deploy:
   - zip -r --exclude=\*.git\* --exclude=\*.node_modules\* --exclude=\*.log\* groupTalkServer.zip *
   - mkdir -p deploy
   - mv node-group-server.zip deploy/node-group-server.zip
+  
