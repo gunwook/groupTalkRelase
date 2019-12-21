@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./build/",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "target": "es2016",
+        "experimentalDecorators" : true,
+        "emitDecoratorMetadata": true,
+        "sourceMap": true,
+        "plugins": [
+            {
+                "name": "tslint-language-service"
+            }
+        ],
+        "lib": ["dom","es2016", "esnext.asynciterable"]
+    },
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"]
+}
