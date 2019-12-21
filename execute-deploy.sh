@@ -1,3 +1,5 @@
 #!/bin/bash
 
-cd /home/ubuntu/
+cd /home/ubuntu/deploy
+
+./start-server.sh
