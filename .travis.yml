@@ -13,7 +13,7 @@ cache:
 
 
 before_deploy:
-   - deploy/before_deploy.sh
+   - /Users/leegunwook/Desktop/serverProduction/groupTalkServer/deploy/before_deploy.sh
 deploy:
     provider: s3 # AWS S3를 의미
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
