@@ -14,7 +14,7 @@ cache:
 
 before_deploy:
   - rm -rf node_modules
-  - zip -r groupTalkServer *
+  - zip -r groupTalkRelase *
   - mkdir -p deploy
   - mv groupTalkRelase.zip deploy/groupTalkRelase.zip
 
