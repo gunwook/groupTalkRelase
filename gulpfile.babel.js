@@ -11,6 +11,15 @@ async function scripts() {
   return tsResult.js.pipe(gulp.dest('build'));
 }
 
+async function build() {
+  var tsconfig = require("./tsconfig.json");
+  var filePaths = tsconfig.include;
+
+  return gulp.src(filePaths)
+  .pipe(tsProject())
+  .pipe(gulp.dest('build'));
+}
+
 function watch() {
    gulp.watch('**/*.ts', scripts);
 }
@@ -30,7 +39,7 @@ var dev = gulp.series(gulp.parallel(start,scripts, watch));
 /*
  * You can still use `gulp.task` to expose tasks
  */
-gulp.task('build', scripts);
+gulp.task('build', build);
 
 gulp.task('clean', function () {
   return gulp.src('build/*.js', {read: false})
