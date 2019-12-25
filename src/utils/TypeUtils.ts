@@ -5,7 +5,6 @@ export type GroupType = {
 } 
 
 export type UserType = {
-    user_id : string,
     offset:  number,
     limit : number
 } 

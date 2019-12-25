@@ -21,7 +21,6 @@ export interface IPostModel extends Document {
     sub_title : string  // 부제목
     alignment : number // 정렬 (0 = 왼쪽 정렬 , 1 = 가운데 정렬 , 2 = 오른쪽 정렬)
     visible : string // 삭제 여부  ("y" = 미삭제 , "n" = 삭제) 
-    user_id : string // user_id
     group_id : string // group_id ( socket_id 동일 )
     _user : Schema.Types.ObjectId | IUser[]
 }
@@ -54,8 +53,6 @@ export interface IPostModel extends Document {
  *          type : number
  *        visible:
  *          type : string
- *        user_id:
- *          type : string
  *        group_id:
  *          type : string
  */
@@ -69,7 +66,6 @@ const PostSchema: Schema = new Schema({
     sub_title : { type : String},
     alignment : {type : Number , default : 0},
     visible : {type : String , default : Common.VISIBLE},
-    user_id : {type : String , required : true},
     group_id : { type : String , required : true},
     _user : [{ type : mongoose.Schema.Types.ObjectId , ref : 'UserModel'}]
 }, {

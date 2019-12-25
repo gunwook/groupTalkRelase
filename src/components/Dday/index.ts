@@ -8,8 +8,8 @@ export async function create(data : IDdayModel): Promise < IDdayModel> {
     return await DdayService.create(data);
 }
 
-export async function update(data : IDdayModel): Promise < IDdayModel> {
-    return await DdayService.update(data);
+export async function update(data : IDdayModel , userId : string): Promise < IDdayModel> {
+    return await DdayService.update(data , userId);
 }
 
 export async function get(limit : number , offset : number , group_id : string) : Promise < ResultDdayType > {

@@ -10,7 +10,7 @@ export async function signup(req: Request, res: Response, next: NextFunction): P
     try {
         const user: IUserModel = await AuthService.createUser(req , req.body);
         const token: string = jwt.sign({ id: user.id }, app.get('secret'), {
-            expiresIn: '60m'
+            expiresIn: '7d'
         });
         
         res.json({
@@ -39,7 +39,7 @@ export async function login(req: Request, res: Response, next: NextFunction): Pr
         const user: IUserModel = await AuthService.getUser(req.body);
 
         const token: string = jwt.sign({ id: user.id }, app.get('secret'), {
-            expiresIn: '60m'
+            expiresIn: '7d'
         });
         
         res.json({

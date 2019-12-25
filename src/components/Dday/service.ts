@@ -22,7 +22,7 @@ export const ChatService  : IDdayService =  {
             throw new CError(error);
         }
     },
-    async update(data : IDdayModel): Promise < IDdayModel > {
+    async update(data : IDdayModel , userId : string): Promise < IDdayModel > {
         try {
             const validate: Joi.ValidationResult < IDdayModel > = DdayValidation.update(data.toObject());
             
@@ -34,11 +34,10 @@ export const ChatService  : IDdayService =  {
                 start_dt : data.start_dt,
                 end_dt : data.end_dt,
                 group_id : data.group_id,
-                user_id : data.user_id,
                 title : data.title,
                 dday_list : data.dday_list,
                 visible_yn : data.visible_yn,
-                _user : data.user_id
+                _user : userId
             }})
 
             return result

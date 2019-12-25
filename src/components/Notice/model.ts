@@ -16,7 +16,7 @@ export interface INoticeModel extends Document {
     content : string // 내용
     visible : string // 보여지는지 여부
     content_url : string // 이동 URL
-    user_id : string // id
+    user_id : Schema.Types.ObjectId // id
 }
 
 /**
@@ -58,7 +58,7 @@ const NoticeSchema: Schema = new Schema({
     content : { type : String , required : true},
     visible : { type : String , required : true , default : Common.VISIBLE},
     content_url : {type : String},
-    user_id : {type : String , required : true}
+    user_id : {type : mongoose.Schema.Types.ObjectId , required : true}
 }, {
     collection: 'noticemodel',
     versionKey: false

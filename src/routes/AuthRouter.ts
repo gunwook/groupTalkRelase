@@ -85,7 +85,7 @@ router.post('/signup', upload.single('photos'), AuthComponent.signup);
  */
 router.post('/login', AuthComponent.login);
 
-router.get('/email', jwtConfig.isAuthenticated ,  AuthComponent.email);
+router.get('/email',  AuthComponent.email);
 
 router.patch('/token' , jwtConfig.isAuthenticated ,  AuthComponent.fcmToken)
 

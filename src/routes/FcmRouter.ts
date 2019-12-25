@@ -5,6 +5,8 @@ import HttpError from '../config/error';
 
 import AuthService from '../components/Auth/service';
 import { IUserModel } from '../components/User/model';
+import NoticeModel from '../components/Notice/model';
+import { create } from '../components/Notice/index'
 
 /**
  * @constant {express.Router}
@@ -32,7 +34,6 @@ router.post('/' , async (req,res,next) => {
             throw new CError(err)
         })
     } catch (error) {
-        console.log(error)
         if (error.code === 500) {
             return next(new HttpError(error.message.status, error.message));
         }

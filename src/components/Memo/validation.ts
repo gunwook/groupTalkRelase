@@ -17,7 +17,6 @@ class MemoValidation extends Validation {
             title : Joi.string().required(),
             message : Joi.string().required(),
             date : Joi.date().required(),
-            user_id : Joi.string().required(),
             visible : Joi.string().required(),
             group_id : Joi.string().required(),
             _user : Joi.optional()
@@ -34,7 +33,6 @@ class MemoValidation extends Validation {
             title : Joi.string().required(),
             message : Joi.string().required(),
             date : Joi.date().required(),
-            user_id : Joi.string().required(),
             visible : Joi.string().required(),
             group_id : Joi.string().required(),
             _user : Joi.optional()
@@ -44,17 +42,15 @@ class MemoValidation extends Validation {
     }
 
     getMemo(
-        user_id : string,
         offset : number,
         limit : number
     ) : Joi.ValidationResult<UserType> {
         const schema = Joi.object({
-            user_id : Joi.string(),
             offset : Joi.number(),
             limit : Joi.number()
         })
 
-        return schema.validate({user_id ,offset , limit})
+        return schema.validate({offset , limit})
     }
 
     checkMemoId(

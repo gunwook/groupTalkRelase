@@ -26,7 +26,6 @@ export interface IDdayModel extends Document {
     start_dt : Date  // 시작날짜
     end_dt : Date // 마지막날짜
     group_id : string   // 그룹 id 
-    user_id : string  // user_id
     title : string // title
     dday_list : DListModel[] // model list
     visible_yn : string // 표시 여부
@@ -50,8 +49,6 @@ export interface IDdayModel extends Document {
  *          type: string
  *        group_id: 
  *          type : string
- *        user_id:
- *          type : string
  *        dday_list : 
  *          type : Array
  *        title :
@@ -64,7 +61,6 @@ const DdaySchema : Schema = new Schema({
     start_dt : {type : Date , required : true},
     end_dt : {type : Date , required : true} ,
     group_id : {type : String , required : true , index : true},
-    user_id : {type : String , required : true , index : true},
     title : {type  : String , required : true},
     dday_list : {type : Array},
     visible_yn : {type : String},

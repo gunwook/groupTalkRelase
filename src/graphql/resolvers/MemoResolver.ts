@@ -64,11 +64,10 @@ export default class {
                 message ,
                 date,
                 group_id,
-                user_id,
                 _user : user_id
             })
 
-            return await updateMemo(model)
+            return await updateMemo(model , user_id)
         } catch (error) {
             logger.error(error)
             return 
@@ -86,7 +85,7 @@ export default class {
         @Ctx(Parameter.USER_ID) user_id: string
         ) : Promise<MemoResultData>{
         try{
-            return await getMemoList(group_id, user_id,limit,offset)
+            return await getMemoList(group_id,limit,offset)
         }catch(error) {
             logger.error(error)
             return

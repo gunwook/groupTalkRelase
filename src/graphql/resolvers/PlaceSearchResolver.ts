@@ -7,7 +7,6 @@ import { RedisCode , Api , Parameter , PlaceCode , PlaceList} from '../../utils/
 import {pad } from '../../utils/CommonUtils'
 import {compact} from 'lodash'
 import { isArrayEmpty , parse} from '../../utils/CommonUtils'
-import { movie} from '../data/test'
 import { format } from "logform";
 import { logger } from "../../utils/logger";
 

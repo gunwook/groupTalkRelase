@@ -27,12 +27,14 @@ const CalendarService: ICalendarService = {
 
     async getCalendars(start_dt : string , group_id : string) : Promise<ICalendarModel[]> {
         try {
-            let startDt = new Date(start_dt).toISOString()
+            let date = new Date(start_dt)
+            date.setUTCHours(0,0,0,0)
+
             return await CalendarModel.find({
                 $and: [
                     { group_id },
-                    { start_dt : {$lte : startDt}},
-                    { end_dt : {$gte : startDt}}
+                    { start_dt : {$lte : date}},
+                    { end_dt : {$gte : date}}
                 ]
             })
         } catch (error) {

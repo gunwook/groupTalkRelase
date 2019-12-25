@@ -1,5 +1,6 @@
 import { Field, Int, ObjectType } from "type-graphql";
 import {Task} from "./Task";
+import { Schema } from "mongoose";
 
 export interface NoticeData {
     notice_id: number;
@@ -9,7 +10,7 @@ export interface NoticeData {
     content : string;
     visible : string;
     content_url : string;
-    user_id : string
+    user_id : Schema.Types.ObjectId
 }
 
 export interface NoticeResultData {

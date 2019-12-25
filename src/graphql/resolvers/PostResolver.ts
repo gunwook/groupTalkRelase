@@ -42,7 +42,6 @@ export default class {
                 sub_title,
                 alignment,
                 group_id,
-                user_id,
                 _user : user_id
             })
             let response = await createPost(model)
@@ -67,8 +66,7 @@ export default class {
     async getPost(
         @Arg(Parameter.LIMIT) limit : number,
         @Arg(Parameter.OFFSET) offset : number,
-        @Arg(Parameter.GROUP_ID) group_id : string,
-        @Ctx(Parameter.USER_ID) user_id: string
+        @Arg(Parameter.GROUP_ID) group_id : string
     ) : Promise<ResultPostData> {
         try {
             return await getPost(group_id, offset, limit)

@@ -9,7 +9,6 @@ export interface DdayData {
   start_dt : Date  // 시작날짜
   end_dt : Date // 마지막날짜
   group_id : string   // 그룹 id 
-  user_id : string  // user_id
   title : string // title
   dday_list : DListModel[] // model list
   visible_yn : string // 표시 여부
@@ -30,9 +29,6 @@ export class Dday {
 
   @Field()
   group_id: string;
-
-  @Field()
-  user_id : string;
 
   @Field()
   title : string;

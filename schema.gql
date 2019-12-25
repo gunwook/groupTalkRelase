@@ -38,7 +38,6 @@ type Dday {
   start_dt: DateTime!
   end_dt: DateTime!
   group_id: String!
-  user_id: String!
   title: String!
   dday_id: Float!
   dday_list: [DdayItem!]!
@@ -69,7 +68,6 @@ type Movie {
 }
 
 type Mutation {
-  markAsCompleted(taskId: Float!): Task!
   createCalendar(group_id: String!, type: Float!, check_yn: String!, message: String!, end_dt: String!, start_dt: String!): Calendar
   createPost(tags: [String!], image: [String!], group_id: String!, alignment: Float!, sub_title: String!, title: String!, message: String!, date: String!): Post
   createMemo(group_id: String!, date: String!, message: String!, title: String!): Memo
@@ -110,16 +108,7 @@ type Post {
   _user: [User!]!
 }
 
-type Project {
-  id: Int!
-  name: String!
-  tasks: [Task!]!
-}
-
 type Query {
-  projectByName(name: String!): Project
-  fetchTasks: [Task!]!
-  getTask(id: Float!): Task
   getMovie: [Movie!]
   getPlace(type: String!, location: String!): [Place!]
   getCalendars(group_id: String!, start_dt: String!): [Calendar!]
@@ -151,13 +140,6 @@ type ResultNotice {
 type ResultPost {
   data: [Post!]!
   count: Float!
-}
-
-type Task {
-  id: Int!
-  title: String!
-  project: Project!
-  completed: Boolean!
 }
 
 type User {

@@ -1,4 +1,4 @@
-var FCM = require('fcm-node');
+const FCM = require('fcm-node');
 import { retry } from './CommonUtils';
 
 let penv = process.env;

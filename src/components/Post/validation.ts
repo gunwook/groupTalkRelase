@@ -23,7 +23,6 @@ class PostValidation extends Validation {
             sub_title : Joi.string().optional(),
             alignment : Joi.number().optional(),
             visible : Joi.string().optional(),
-            user_id : Joi.string().required(),
             group_id : Joi.string().required(),
             _user : Joi.optional()
         });

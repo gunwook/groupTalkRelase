@@ -5,12 +5,12 @@ export async function createMemo(data : IMemoModel): Promise < IMemoModel > {
     return await MemoService.createMemo(data);
 }
 
-export async function updateMemo(data : IMemoModel) : Promise < IMemoModel > {
-    return await MemoService.updateMemo(data)
+export async function updateMemo(data : IMemoModel , userId : string) : Promise < IMemoModel > {
+    return await MemoService.updateMemo(data , userId)
 } 
 
-export async function getMemoList(group_id : string , user_id : string , limit : number , offset : number): Promise < ResultMemoType > {
-    return await MemoService.getMemoList(group_id, user_id,limit,offset);
+export async function getMemoList(group_id : string , limit : number , offset : number): Promise < ResultMemoType > {
+    return await MemoService.getMemoList(group_id,limit,offset);
 }
 
 export async function getMemoId(memo_id : number) : Promise <IMemoModel> {

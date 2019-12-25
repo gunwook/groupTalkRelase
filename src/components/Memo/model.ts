@@ -11,7 +11,6 @@ export interface ResultMemoType {
 
 export interface IMemoModel extends Document {
     memo_id : number // 고유 memo id
-    user_id : string // user_id
     title : string // 제목
     message : string // 내용
     date : Date // 날짜
@@ -30,7 +29,6 @@ export interface IMemoModel extends Document {
  *        message:
  *        date:
  *        visible:
- *        user_id:
  *      properties:
  *        title:
  *          type: string
@@ -40,8 +38,6 @@ export interface IMemoModel extends Document {
  *          type: Date
  *        visible:
  *          type: string
- *        user_id:
- *          type :string
  *        group_id:
  *          type :string
  */
@@ -52,7 +48,6 @@ const MemoSchema: Schema = new Schema({
     date : {type : Date , required : true},
     visible : {type : String , index : true , default : Common.VISIBLE},
     group_id : {type : String , required : true},
-    user_id : {type : String , required : true},
     _user : [{ type : mongoose.Schema.Types.ObjectId , ref : 'UserModel'}]
 }, {
     collection: 'memomodel',

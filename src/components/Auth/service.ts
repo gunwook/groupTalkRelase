@@ -87,8 +87,7 @@ const AuthService: IAuthService = {
 
             if (user) {
                 let code = `${makeid(6)}${new Date().getTime()}`
-
-                Mail.to = "eorjstldzm@gmail.com";
+                Mail.to = email;
                 Mail.subject = "그룹 채팅 어플에서 계정 찾기"
                 Mail.message = "그룹 채팅 어플에서 드리는 계정 찾기에 관련된 코드 입니다. \n code : " + code;
                 await Mail.sendMail();

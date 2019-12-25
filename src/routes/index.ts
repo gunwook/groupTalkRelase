@@ -34,13 +34,19 @@ export async function init(app: express.Application){
      * @constructs
     */
    app.use(morgan(function (tokens, req, res) {
+    let message = ""
+
+    if (req.url != '/login' && req.url != '/signup' && req.url != '/password') {
+        message = req.method == 'GET' ? JSON.stringify(req.query) : JSON.stringify(req.body)
+    }
+
     return [
       tokens.method(req, res),
       tokens.url(req, res),
       tokens.status(req, res),
       tokens.res(req, res, 'content-length'), '-',
       tokens['response-time'](req, res), 'ms',
-      req.method == 'GET' ? JSON.stringify(req.query) : JSON.stringify(req.body)
+      message
     ].join(' ')
   }))
 

@@ -36,7 +36,7 @@ export default class {
                 content,
                 visible,
                 content_url,
-                user_id
+                user_id : user_id
             })
 
             return await create(model)

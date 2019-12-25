@@ -100,14 +100,13 @@ export default class {
                 start_dt,
                 end_dt ,
                 group_id,
-                user_id,
                 title,
                 dday_list,
                 visible_yn : Common.VISIBLE,
                 _user : user_id
             })
 
-            let result = await update(model)
+            let result = await update(model , user_id)
             
             return result
         } catch (error) {

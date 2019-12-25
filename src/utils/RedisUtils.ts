@@ -63,7 +63,7 @@ class RedisUtils {
      */
     async deleteKey(key){
         try {
-            var result = await this.redis.del(key)
+            const result = await this.redis.del(key)
             return result
         }catch (err) {
             logger.error(err)
@@ -77,7 +77,7 @@ class RedisUtils {
      */
     async hdeleteKey(key , fields){
         try {
-            var result = await this.redis.hdel(key , fields)
+            const result = await this.redis.hdel(key , fields)
             return result
         }catch (err) {
             logger.error(err)

@@ -5,6 +5,7 @@ import MemoModel, { IMemoModel , ResultMemoType } from './model';
 import CError from '../../utils/CError';
 import { Parameter, Common } from '../../utils/CodeUtils';
 import { UserType } from '../../utils/TypeUtils';
+import { logger } from '../../utils/logger';
 export const MemoService  : IMemoService =  {
     async createMemo(data : IMemoModel): Promise < IMemoModel > {
         try {
@@ -22,7 +23,7 @@ export const MemoService  : IMemoService =  {
         }
     },
 
-    async updateMemo(data : IMemoModel): Promise < IMemoModel > {
+    async updateMemo(data : IMemoModel , userId : string): Promise < IMemoModel > {
         try {
             const validate: Joi.ValidationResult < IMemoModel > = MemoValidation.updateMemo(data.toObject());
             
@@ -37,8 +38,7 @@ export const MemoService  : IMemoService =  {
                 date : data.date,
                 visible : data.visible,
                 group_id : data.group_id,
-                user_id : data.user_id,
-                _user : data.user_id
+                _user : userId
             }})
             
             return result
@@ -47,9 +47,9 @@ export const MemoService  : IMemoService =  {
         }
     },
 
-    async getMemoList(group_id : string , user_id : string , limit : number , offset : number) : Promise <ResultMemoType> {
+    async getMemoList(group_id : string , limit : number , offset : number) : Promise <ResultMemoType> {
 
-        const validate: Joi.ValidationResult < UserType > = MemoValidation.getMemo(user_id,limit,offset);
+        const validate: Joi.ValidationResult < UserType > = MemoValidation.getMemo(limit,offset);
             
         if (validate.error) {
             throw new CError(validate.error.message);
