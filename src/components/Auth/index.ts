@@ -109,6 +109,25 @@ export async function fcmToken(req: Request, res: Response, next: NextFunction):
     }
 }
 
+export async function check(req: Request, res: Response, next: NextFunction): Promise < void > {
+    try {
+        res.json({
+            status: 200,
+            logged: true,
+            message: "Token information is valid"
+        });
+    } catch (error) {
+        if (error.code === 500) {
+            return next(new HttpError(error.message.status, error.message));
+        }
+
+        res.json({
+            status: 400,
+            message: error.message
+        });
+    }
+}
+
 export async function email(req: Request, res: Response, next: NextFunction): Promise < void > {
     try {
         await AuthService.sendEmail(req.query.email);

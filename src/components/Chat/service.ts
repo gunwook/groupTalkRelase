@@ -45,6 +45,8 @@ export const ChatService  : IChatService =  {
                     data : resultArray[0],
                     count : resultArray[1]
                 }
+
+                console.log(result)
     
                 return result
             }).catch(error => {

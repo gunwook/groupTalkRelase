@@ -16,12 +16,18 @@ const router: Router = Router();
 
 router.post('/' , async (req,res,next) => {
     try {
-        const user : IUserModel = await AuthService.getEmail(req.body.data);
+        const receiveUser : IUserModel = await AuthService.getEmail(req.body.receive_email);
+        const sendUser : IUserModel = await AuthService.getEmail(req.body.send_email);
 
         const message = {
-            push_id : user.fcm_token,
-            type : req.body.type,
-            data : JSON.stringify({ email : user["email"] , socketRoom : user["socketRoom"]})
+            push_id : receiveUser.fcm_token,
+            type : req.body.type
+        }
+
+        if (req.body.type == 'user_confirm'){
+            message['data'] = JSON.stringify({ email : req.body.send_email , socketRoom : sendUser["socketRoom"]})
+        }else {
+            message['data'] = JSON.stringify({ email : req.body.send_email , socketRoom : receiveUser["socketRoom"]})
         }
 
         FCMMannger.sendPush(message).then(response => {

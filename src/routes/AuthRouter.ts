@@ -87,6 +87,8 @@ router.post('/login', AuthComponent.login);
 
 router.get('/email',  AuthComponent.email);
 
+router.get('/check' , jwtConfig.isAuthenticated , AuthComponent.check)
+
 router.patch('/token' , jwtConfig.isAuthenticated ,  AuthComponent.fcmToken)
 
 router.get('/search', jwtConfig.isAuthenticated , AuthComponent.searchEmail);
