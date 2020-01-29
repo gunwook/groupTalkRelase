@@ -88,9 +88,7 @@ export default class ChatServer {
                     
                     createChat(model).then(data => {
                         logger.info(`socket to send : ${message.room}`)
-                        socket.join(message.room, () => {
-                            this.io.to(message.room).emit(socketCode.event_message, data);
-                        });
+                        this.io.to(message.room).emit(socketCode.event_message, data);
                     }).catch(error => {
                         logger.error(error)
                     })
